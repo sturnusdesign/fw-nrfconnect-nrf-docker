@@ -20,12 +20,13 @@ jobs:
         run: |
           git clone https://github.com/nrfconnect/sdk-nrf nrf
           cd nrf
-          docker build -t coderbyheart/fw-nrfconnect-nrf-docker -f ../Dockerfile .
+          git checkout tags/v1.5.0
+          docker build -t sturnusdesign/fw-nrfconnect-nrf-docker -f ../Dockerfile .
 
       - name: Build asset_tracker application
         run: |
           docker run --rm -v ${PWD}/nrf:/workdir/ncs/nrf \
-            coderbyheart/fw-nrfconnect-nrf-docker \
+            sturnusdesign/fw-nrfconnect-nrf-docker \
             /bin/bash -c 'cd ncs/nrf/applications/asset_tracker && west build -p always -b nrf9160dk_nrf9160ns'
 
       - uses: actions/upload-artifact@v2
@@ -38,6 +39,6 @@ jobs:
       - name: Publish image
         run: |
           cd nrf
-          docker login -u coderbyheart -p $DOCKER_PASSWORD
+          docker login -u sturnusdesign -p $DOCKER_PASSWORD
           docker images
-          docker push coderbyheart/fw-nrfconnect-nrf-docker
+          docker push sturnusdesign/fw-nrfconnect-nrf-docker

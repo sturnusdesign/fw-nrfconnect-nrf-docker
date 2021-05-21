@@ -13,6 +13,7 @@ RUN mkdir /workdir/ncs && \
         gperf \
         git \
         python3-setuptools \
+        srecord \
         libncurses5 libncurses5-dev \
         libyaml-dev libfdt1 && \
     apt-get -y remove python-cryptography python3-cryptography && \

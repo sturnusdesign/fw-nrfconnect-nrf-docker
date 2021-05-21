@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - saga
-  schedule:
-    - cron: "0 0 * * *"
+#  schedule:
+#    - cron: "0 0 * * *"
 
 env:
   DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}

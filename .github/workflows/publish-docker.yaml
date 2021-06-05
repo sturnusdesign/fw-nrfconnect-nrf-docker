@@ -10,6 +10,7 @@ on:
 
 env:
   DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+  VERSION: "v1.5.0"
 
 jobs:
   build:
@@ -21,7 +22,7 @@ jobs:
         run: |
           git clone https://github.com/nrfconnect/sdk-nrf nrf
           cd nrf
-          git checkout tags/v1.5.0
+          git checkout tags/$VERSION
           docker build -t sturnusdesign/fw-nrfconnect-nrf-docker -f ../Dockerfile .
 
       - name: Build asset_tracker application
@@ -42,4 +43,4 @@ jobs:
           cd nrf
           docker login -u sturnusdesign -p $DOCKER_PASSWORD
           docker images
-          docker push sturnusdesign/fw-nrfconnect-nrf-docker
+          docker push sturnusdesign/fw-nrfconnect-nrf-docker:$VERSION

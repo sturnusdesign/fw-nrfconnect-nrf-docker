@@ -43,4 +43,5 @@ jobs:
           cd nrf
           docker login -u sturnusdesign -p $DOCKER_PASSWORD
           docker images
-          docker push sturnusdesign/fw-nrfconnect-nrf-docker:$VERSION
+          docker tag sturnusdesign/fw-nrfconnect-nrf-docker sturnusdesign/fw-nrfconnect-nrf-docker:$VERSION
+          docker push -a sturnusdesign/fw-nrfconnect-nrf-docker

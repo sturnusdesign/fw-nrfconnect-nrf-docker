@@ -10,7 +10,7 @@ on:
 
 env:
   DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-  VERSION: "v1.5.0"
+  VERSION: "v1.5.1"
 
 jobs:
   build:
@@ -41,7 +41,7 @@ jobs:
       - name: Publish image
         run: |
           cd nrf
-          docker login -u sturnusdesign -p $DOCKER_PASSWORD
+          echo $DOCKER_PASSWORD | docker login -u sturnusdesign --password-stdin
           docker images
           docker tag sturnusdesign/fw-nrfconnect-nrf-docker sturnusdesign/fw-nrfconnect-nrf-docker:$VERSION
           docker push -a sturnusdesign/fw-nrfconnect-nrf-docker

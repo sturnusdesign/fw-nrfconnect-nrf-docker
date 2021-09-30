@@ -10,7 +10,7 @@ on:
 
 env:
   DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-  VERSION: "v1.5.1"
+  VERSION: "v1.7.0"
 
 jobs:
   build:

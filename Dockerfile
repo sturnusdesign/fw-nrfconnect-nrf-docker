@@ -36,7 +36,7 @@ RUN mkdir /workdir/ncs && \
     python3 -m pip install -U pip && \
     python3 -m pip install -U setuptools && \
     python3 -m pip install cmake wheel && \
-    python3 -m pip install -U west==0.12.0 && \
+    python3 -m pip install -U west==1.2.0 && \
     python3 -m pip install pc_ble_driver_py && \
     # Newer PIP will not overwrite distutils, so upgrade PyYAML manually
     python3 -m pip install --ignore-installed -U PyYAML && \
